@@ -1,0 +1,28 @@
+Análisis del Esquema:
+Productos:
+
+Campos:
+Producto: Nombre del producto.
+Cantidad: Cantidad en inventario.
+Activo: Indica si el producto está activo o no.
+Categoria: Categoría del producto.
+Precio: Precio del producto.
+
+Paquetes:
+
+Campos:
+NombrePaquete: Nombre del paquete.
+Descuento: Descuento aplicado al paquete.
+
+Cliente:
+
+Campos:
+Nombre, Apellidos, Cedula, Direccion, Email: Información personal del cliente.
+Dinero: Dinero disponible en la cuenta del cliente.
+MetodoPago, Foto, NumeroTarjeta, NumeroCuentaBanco, Contrasena, TipoCliente: Información adicional del cliente.
+
+CarritoCompras:
+
+Campos:
+idCliente: Relaciona el carrito con un cliente.
+idProducto: Relaciona el carrito con un producto.
