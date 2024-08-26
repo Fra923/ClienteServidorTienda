@@ -93,7 +93,7 @@ public class LoginView extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Administrador admin = gestionClientes.iniciarSesionAdministrador(jTextField1.getText(), jTextField3.getText());
-        new TiendaView(gestionClientes, gestionInventario).setVisible(true);
+        new AdminMenuView(gestionClientes, gestionInventario).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
