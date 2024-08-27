@@ -4,6 +4,9 @@
  */
 package FvView;
 
+import FvController.GestionClientes;
+import FvController.GestionInventario;
+
 /**
  *
  * @author XPC
@@ -16,7 +19,8 @@ public class AdminViewGestionClientes extends javax.swing.JFrame {
     public AdminViewGestionClientes() {
         initComponents();
     }
-
+    GestionClientes gestionClientes;
+    GestionInventario gestionInventario;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
