@@ -113,7 +113,7 @@ public class ClienteRegistrado extends Cliente {
         String sql = "INSERT INTO Cliente (Nombre, Apellidos, Cedula, Direccion, Email, Dinero, MetodoPago, Foto, NumeroTarjeta, NumeroCuentaBanco, Contrasena, TipoCliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         int id = -1;
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "root");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "password");
              PreparedStatement pstmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
 
             pstmt.setString(1, getNombre());
