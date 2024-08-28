@@ -22,7 +22,12 @@ public class GestionInventario {
     }
     
     public void crearPaquete(String nombre, List<Producto> productos, double descuento) {
-        Paquete paquete = new Paquete(nombre, productos, descuento);
+        String productosString = "";
+        for (Producto p:productos){
+            productosString = productosString+p.getIdProducto();
+        }
+        productosString = productosString.substring(0, productosString.length() - 1);
+        Paquete paquete = new Paquete(nombre, productosString, descuento);
         paquetes.add(paquete);
     }
 
@@ -39,6 +44,10 @@ public class GestionInventario {
     
     public List<Producto> consultarTodosProductos(){        
         return Producto.leerTodosProductos();
+    }
+    
+    public List<Paquete> consultarTodosPaquetes(){        
+        return Paquete.leerTodosPaquete();
     }
     
 }

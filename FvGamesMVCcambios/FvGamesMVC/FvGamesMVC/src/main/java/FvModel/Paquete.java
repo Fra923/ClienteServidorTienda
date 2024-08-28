@@ -11,21 +11,22 @@ import java.util.List;
 public class Paquete {
     private int idPaquete;
     private String nombre;
-    private List<Producto> productos;
+    private String productos;
     private double descuento;
 
     // Constructor para crear un paquete nuevo
-    public Paquete(String nombre, List<Producto> productos, double descuento) {
-        if (productos.size() < 2 || productos.size() > 5) {
+    public Paquete(String nombre, String productos, double descuento) {
+        String[] splitted = productos.split(",");
+        if (splitted.length< 2 || splitted.length > 5) {
             throw new IllegalArgumentException("El paquete debe contener entre 2 y 5 productos.");
         }
         this.nombre = nombre;
-        this.productos = new ArrayList<>(productos);
+        this.productos = productos;
         this.descuento = descuento;
     }
 
     // Constructor para cargar un paquete existente
-    public Paquete(int idPaquete, String nombre, List<Producto> productos, double descuento) {
+    public Paquete(int idPaquete, String nombre, String productos, double descuento) {
         this.idPaquete = idPaquete;
         this.nombre = nombre;
         this.productos = productos;
@@ -45,7 +46,7 @@ public class Paquete {
         this.nombre = nombre;
     }
 
-    public List<Producto> getProductos() {
+    public String getProductos() {
         return productos;
     }
 
@@ -59,9 +60,9 @@ public class Paquete {
 
     public double calcularPrecioTotal() {
         double total = 0;
-        for (Producto p : productos) {
-            total += p.getPrecio();
-        }
+//        for (Producto p : productos) {
+//            total += p.getPrecio();
+//        }
         return total * (1 - descuento / 100);
     }
 
@@ -99,11 +100,11 @@ public class Paquete {
             }
 
             // Insertar los productos asociados al paquete
-            for (Producto producto : productos) {
-                pstmtProductoPaquete.setInt(1, this.idPaquete);
-                pstmtProductoPaquete.setInt(2, producto.getIdProducto());
-                pstmtProductoPaquete.executeUpdate();
-            }
+//            for (Producto producto : productos) {
+//                pstmtProductoPaquete.setInt(1, this.idPaquete);
+//                pstmtProductoPaquete.setInt(2, producto.getIdProducto());
+//                pstmtProductoPaquete.executeUpdate();
+//            }
 
             System.out.println("Paquete creado exitosamente.");
         } catch (SQLException e) {
@@ -133,6 +134,7 @@ public class Paquete {
                 pstmtProductos.setInt(1, idPaquete);
                 ResultSet rsProductos = pstmtProductos.executeQuery();
                 List<Producto> productos = new ArrayList<>();
+                String productosString = "";
 
                 while (rsProductos.next()) {
                     int idProducto = rsProductos.getInt("idProductos");
@@ -141,12 +143,14 @@ public class Paquete {
                     int cantidad = rsProductos.getInt("Cantidad");
                     double precio = rsProductos.getDouble("Precio");
                     String imagen = rsProductos.getString("imagen");
-
+                    
+                    productosString = productosString + idProducto + ",";
                     Producto producto = new Producto(idProducto, nombreProducto, categoria, precio, cantidad);
                     productos.add(producto);
                 }
+                productosString = productosString.substring(0, productosString.length() - 1);
 
-                paquete = new Paquete(idPaquete, nombre, productos, descuento);
+                paquete = new Paquete(idPaquete, nombre, productosString, descuento);
             }
 
         } catch (SQLException e) {
@@ -178,16 +182,43 @@ public class Paquete {
             pstmtEliminarProductos.executeUpdate();
 
             // Insertar los nuevos productos asociados al paquete
-            for (Producto producto : productos) {
-                pstmtProductoPaquete.setInt(1, this.idPaquete);
-                pstmtProductoPaquete.setInt(2, producto.getIdProducto());
-                pstmtProductoPaquete.executeUpdate();
-            }
+//            for (Producto producto : productos) {
+//                pstmtProductoPaquete.setInt(1, this.idPaquete);
+//                pstmtProductoPaquete.setInt(2, producto.getIdProducto());
+//                pstmtProductoPaquete.executeUpdate();
+//            }
 
             System.out.println("Paquete actualizado exitosamente.");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+            // Leer un paquete de la base de datos
+    public static List<Paquete> leerTodosPaquete() {
+        String sqlPaquete = "SELECT * FROM Paquetes";
+        List<Paquete> paquetes = new ArrayList<>();
+
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "root");
+             PreparedStatement pstmtPaquete = conn.prepareStatement(sqlPaquete);) {
+
+            // Obtener los detalles del paquete
+            ResultSet rsPaquete = pstmtPaquete.executeQuery();
+
+            if (rsPaquete.next()) {
+                int id = rsPaquete.getInt("idPaquete");
+                String nombre = rsPaquete.getString("NombrePaquete");
+                double descuento = rsPaquete.getDouble("Descuento");
+                String productos = rsPaquete.getString("Productos");
+                
+//                paquetes.add(new Paquete(id, nombre, productos, descuento))
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+//        return paquete;
+return null;
     }
 
     // Eliminar un paquete de la base de datos

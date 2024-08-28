@@ -114,7 +114,7 @@ public class Producto {
         String sql = "SELECT * FROM Productos WHERE idProductos = ?";
         Producto producto = null;
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "password");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "root");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, idProducto);
             ResultSet rs = pstmt.executeQuery();
@@ -124,7 +124,6 @@ public class Producto {
                 String categoria = rs.getString("Categoria");
                 int cantidad = rs.getInt("Cantidad");
                 double precio = rs.getDouble("Precio");
-                String imagen = rs.getString("imagen");
                 producto = new Producto(idProducto, nombre, categoria, precio, cantidad);
             }
         } catch (SQLException e) {

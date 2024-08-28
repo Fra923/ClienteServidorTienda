@@ -36,7 +36,7 @@ public class ElementoCarrito {
     public void guardarElementoCarrito(int idCliente) {
         String sql = "INSERT INTO CarritoCompras (idCliente, idProducto, Estado) VALUES (?, ?, ?)";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "password");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "root");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setInt(1, idCliente);

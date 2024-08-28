@@ -17,14 +17,14 @@ public class AdminViewGestionInventario extends javax.swing.JFrame {
     GestionInventario gestionInventario;
     
     public AdminViewGestionInventario(GestionClientes clientes, GestionInventario inventario ) {
+        initComponents();
         this.gestionClientes = clientes;
         this.gestionInventario = inventario;
         
         DefaultTableModel modeloTabla = new DefaultTableModel ( new Object []{ "Id","Nombre" , "Categoria", "Precio", "Cantidad"}, 0);
         for (Producto producto : gestionInventario.consultarTodosProductos()){
             modeloTabla.addRow(new Object[]{producto.getIdProducto(), producto.getNombre(), producto.getCategoria(), producto.getPrecio(), producto.getCantidad()});
-        }
-        initComponents();
+        }        
         jTable1.setModel(modeloTabla);            
         
     }

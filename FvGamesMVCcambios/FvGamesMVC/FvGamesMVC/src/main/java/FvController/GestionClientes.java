@@ -5,6 +5,7 @@ import FvModel.Cliente;
 import FvModel.ClienteRegistrado;
 import FvModel.Inventario;
 import FvBaseDatos.BaseDatos;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -35,7 +36,7 @@ public class GestionClientes {
     
     public ClienteRegistrado consultarCliente(String cedula){
         ClienteRegistrado cliente = new ClienteRegistrado();
-        cliente.consultarClienteEnDB(cedula);
+        cliente.consultarClienteEnDBCedula(cedula);
         return cliente;
     }
 
@@ -61,6 +62,25 @@ public class GestionClientes {
             System.out.println("Cédula o contraseña incorrecta.");
             return null;
         }
+    }
+    
+    public ClienteRegistrado iniciarSesionCliente(String cedula, String contrasena) {
+        ClienteRegistrado cliente = new ClienteRegistrado();
+        cliente.consultarClienteEnDB(cedula, contrasena);
+        if (!cliente.getCedula().equals("") && !cliente.getContrasena().equals("")) {
+            System.out.println("Inicio de sesión exitoso.");
+            clientesRegistrados.put(cliente.getCedula(), cliente);
+            return cliente;
+        } else {
+            JOptionPane.showMessageDialog(null, "Cédula o contraseña incorrecta.", "Error", 0);
+            System.out.println("Cédula o contraseña incorrecta.");
+            return null;
+        }
+    }
+    
+    public void agregarACarrito(String id, String nombre){
+        ClienteRegistrado cliente = clientesRegistrados.values().iterator().next();
+        cliente.agregarProductoAlCarrito(Integer.valueOf(id), nombre, 1);
     }
 
     public void visualizarProductos(Cliente cliente, Inventario inventario) {
