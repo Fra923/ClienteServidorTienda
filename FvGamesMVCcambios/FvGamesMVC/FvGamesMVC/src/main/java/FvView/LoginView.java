@@ -99,6 +99,7 @@ public class LoginView extends javax.swing.JFrame {
             return;
         }
         new AdminMenuView(gestionClientes, gestionInventario).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

@@ -25,6 +25,12 @@ public class GestionClientes {
         clientesRegistrados.put(cedula, cliente);
         System.out.println("Cliente registrado con éxito.");
     }
+    
+    public ClienteRegistrado consultarCliente(String cedula){
+        ClienteRegistrado cliente = new ClienteRegistrado();
+        cliente.consultarClienteEnDB(cedula);
+        return cliente;
+    }
 
     public void registrarAdministrador(String nombre, String cedula, String contrasena) {
         Administrador administrador = new Administrador(nombre, cedula, contrasena);
@@ -37,8 +43,8 @@ public class GestionClientes {
     }
 
     public Administrador iniciarSesionAdministrador(String cedula, String contrasena) {
-        String contrasenaAdmin = "12345";
-        String cedulaAdmin     = "12345";
+        String contrasenaAdmin = "1";
+        String cedulaAdmin     = "1";
 //        Administrador administrador = administradores.get(cedula);
         if (contrasenaAdmin.equals(contrasena) && cedulaAdmin.equals(cedula)) {
             System.out.println("Inicio de sesión exitoso.");

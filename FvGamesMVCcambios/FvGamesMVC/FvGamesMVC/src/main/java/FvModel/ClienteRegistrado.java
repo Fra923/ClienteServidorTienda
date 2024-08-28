@@ -25,7 +25,10 @@ public class ClienteRegistrado extends Cliente {
         this.contrasena = contrasena;
         this.idCliente = guardarClienteEnDB();
         this.carrito = new CarritoDeCompras(idCliente);
-    }
+    }   
+
+    public ClienteRegistrado() {
+    }   
 
     public String getDireccion() {
         return direccion;
@@ -62,6 +65,14 @@ public class ClienteRegistrado extends Cliente {
     public int getIdCliente() {
         return idCliente;
     }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }  
 
     @Override
     public void visualizarProductos(Inventario inventario) {
@@ -142,5 +153,56 @@ public class ClienteRegistrado extends Cliente {
         }
 
         return id;
+    }
+    
+    public void consultarClienteEnDB(String cedula) {
+        String Nombre       =   "";
+        String Apellidos    =   "";
+        String Cedula       =   "";
+        String Direccion    =   "";
+        String Email        =   "";
+        String Dinero       =   "";
+        String MetodoPago   =   "";
+        String Contrasena   =   "";
+        
+        String sql = "SELECT * FROM cliente WHERE Cedula=?";        
+        
+        System.out.println("Estoy en consultar cliente");
+
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "root");
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, cedula);
+            System.out.println("Ejecutar query con cedula "+cedula);
+
+            // Obtener el ID generado
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    Nombre      =   rs.getString("Nombre");
+                    Cedula      =   rs.getString("Cedula");
+                    Apellidos   =   rs.getString("Apellidos");
+                    Direccion   =   rs.getString("Direccion");
+                    Email       =   rs.getString("Email");
+                    Dinero      =   rs.getString("Dinero");
+                    MetodoPago  =   rs.getString("MetodoPago");
+                    Contrasena  =   rs.getString("Contrasena");                    
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("CATCH");
+            e.printStackTrace();
+        }
+        
+        System.out.println("SETS");
+        System.out.println("Metodo de pago:" + MetodoPago);
+        this.setNombre(Nombre);
+        this.setCedula(Cedula);
+        this.setApellidos(Apellidos);
+        this.setDireccion(Direccion);
+        this.setEmail(Email);
+        this.setDineroEnCuenta(Dinero);
+        this.setMetodoPagoPreferido(MetodoPago);
+        this.setContrasena(Contrasena);
     }
 }

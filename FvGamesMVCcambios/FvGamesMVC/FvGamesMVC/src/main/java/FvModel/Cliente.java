@@ -11,6 +11,9 @@ public abstract class Cliente {
         this.cedula = cedula;
     }
 
+    public Cliente() {
+    }
+
     public String getNombre() {
         return nombre;
     }

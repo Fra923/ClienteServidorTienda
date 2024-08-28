@@ -77,7 +77,7 @@ public class Inventario {
     private void cargarInventarioDesdeDB() {
         String sql = "SELECT * FROM Productos";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/fvgames", "root", "password");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/fvgames", "root", "root");
              PreparedStatement pstmt = conn.prepareStatement(sql);
              ResultSet rs = pstmt.executeQuery()) {
 
