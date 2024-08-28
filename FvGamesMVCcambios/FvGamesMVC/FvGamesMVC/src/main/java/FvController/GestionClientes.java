@@ -26,6 +26,13 @@ public class GestionClientes {
         System.out.println("Cliente registrado con éxito.");
     }
     
+    public void actualizarCliente(String nombre, String apellidos, String cedula, String direccion, String email, String dineroEnCuenta, String metodoPagoPreferido, String contrasena) {
+        ClienteRegistrado cliente = new ClienteRegistrado();
+        cliente.actualizarClienteEnDB(nombre, apellidos, cedula, direccion, email, dineroEnCuenta, metodoPagoPreferido, contrasena);
+        JOptionPane.showMessageDialog(null, "Cliente actualizado con éxito.", "Info", 1);
+        System.out.println("Cliente registrado con éxito.");
+    }
+    
     public ClienteRegistrado consultarCliente(String cedula){
         ClienteRegistrado cliente = new ClienteRegistrado();
         cliente.consultarClienteEnDB(cedula);

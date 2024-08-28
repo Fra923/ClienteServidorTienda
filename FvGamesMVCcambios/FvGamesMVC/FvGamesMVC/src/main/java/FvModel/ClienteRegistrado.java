@@ -205,4 +205,29 @@ public class ClienteRegistrado extends Cliente {
         this.setMetodoPagoPreferido(MetodoPago);
         this.setContrasena(Contrasena);
     }
+    
+    public int actualizarClienteEnDB(String nombre, String apellidos, String cedula, String direccion, String email, String dineroEnCuenta, String metodoPagoPreferido, String contrasena) {
+        String sql = "UPDATE Cliente SET Nombre=?, Apellidos=?, Cedula=?, Direccion=?, Email=?, Dinero=?, MetodoPago=?, Contrasena=? WHERE Cedula=?";
+        int id = -1;
+
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "root");
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, nombre);
+            pstmt.setString(2, apellidos);
+            pstmt.setString(3, cedula);
+            pstmt.setString(4, direccion);
+            pstmt.setString(5, email);
+            pstmt.setString(6, dineroEnCuenta);
+            pstmt.setString(7, metodoPagoPreferido);
+            pstmt.setString(8, contrasena); // Contrasena (dejar vacío o poner valor por defecto si no se tiene)
+            pstmt.setString(9, cedula);
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return id;
+    }
 }

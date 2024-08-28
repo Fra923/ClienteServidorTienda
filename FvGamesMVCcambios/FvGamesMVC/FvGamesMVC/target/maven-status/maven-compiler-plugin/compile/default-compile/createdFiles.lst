@@ -29,6 +29,7 @@ FvView\AdminViewGestionInventario$4.class
 FvView\AdminViewGestionClientes$8.class
 FvView\AdminViewGestionClientes$1.class
 FvView\TiendaView$7.class
+FvView\AdminViewGestionInventario$13.class
 FvView\AdminViewVentas$1.class
 FvView\RegistrarClienteView$9.class
 FvView\AdminViewGestionPaquete$9.class
@@ -74,6 +75,7 @@ FvView\LoginClienteView$3.class
 FvView\AdminViewGestionClientes$4.class
 FvView\AdminViewGestionPaquete$2.class
 FvView\RegistrarClienteView$1.class
+FvView\AdminViewGestionClientes$12.class
 FvBaseDatos\BaseDatos.class
 FvModel\Administrador.class
 FvModel\Producto.class
@@ -83,6 +85,7 @@ FvController\ClienteControlador.class
 FvController\ClienteControlador$2.class
 FvView\AdminViewGestionInventario$8.class
 FvView\AdminViewGestionInventario$1.class
+FvView\AdminViewGestionPaquete$12.class
 FvView\LoginView.class
 FvView\AdminViewGestionInventario$10.class
 FvView\TiendaView$4.class
