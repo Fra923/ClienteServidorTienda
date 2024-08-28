@@ -7,6 +7,7 @@ import FvModel.Inventario;
 import FvBaseDatos.BaseDatos;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
 public class GestionClientes {
     private Map<String, ClienteRegistrado> clientesRegistrados;
@@ -36,11 +37,14 @@ public class GestionClientes {
     }
 
     public Administrador iniciarSesionAdministrador(String cedula, String contrasena) {
-        Administrador administrador = administradores.get(cedula);
-        if (administrador != null && administrador.getContrasena().equals(contrasena)) {
+        String contrasenaAdmin = "12345";
+        String cedulaAdmin     = "12345";
+//        Administrador administrador = administradores.get(cedula);
+        if (contrasenaAdmin.equals(contrasena) && cedulaAdmin.equals(cedula)) {
             System.out.println("Inicio de sesión exitoso.");
-            return administrador;
+            return new Administrador("Admin", cedula, contrasena);
         } else {
+            JOptionPane.showMessageDialog(null, "Cédula o contraseña incorrecta.", "Error", 0);
             System.out.println("Cédula o contraseña incorrecta.");
             return null;
         }
