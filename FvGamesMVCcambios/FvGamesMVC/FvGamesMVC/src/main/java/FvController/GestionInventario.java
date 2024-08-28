@@ -32,6 +32,11 @@ public class GestionInventario {
         }
     }
     
+    public void actualizarProducto(int id, String nombre, String categoria, double precio, int cantidad){
+        Producto producto = new Producto(id, nombre, categoria, precio, cantidad);
+        producto.actualizarProducto();
+    }
+    
     public List<Producto> consultarTodosProductos(){        
         return Producto.leerTodosProductos();
     }

@@ -158,16 +158,15 @@ public class Producto {
 
     // Actualizar un producto en la base de datos
     public void actualizarProducto() {
-        String sql = "UPDATE Productos SET Producto = ?, Categoria = ?, Cantidad = ?, Precio = ?, imagen = ? WHERE idProductos = ?";
+        String sql = "UPDATE Productos SET Producto = ?, Categoria = ?, Cantidad = ?, Precio = ? WHERE idProductos = ?";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "password");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "root");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, this.nombre);
             pstmt.setString(2, this.categoria);
             pstmt.setInt(3, this.cantidad);
             pstmt.setDouble(4, this.precio);
-            pstmt.setString(5, this.imagen);
-            pstmt.setInt(6, this.idProducto);
+            pstmt.setInt(5, this.idProducto);
             pstmt.executeUpdate();
             System.out.println("Producto actualizado exitosamente.");
         } catch (SQLException e) {
