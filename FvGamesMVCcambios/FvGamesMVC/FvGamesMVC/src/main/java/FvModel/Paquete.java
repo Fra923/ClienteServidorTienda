@@ -142,7 +142,7 @@ public class Paquete {
                     double precio = rsProductos.getDouble("Precio");
                     String imagen = rsProductos.getString("imagen");
 
-                    Producto producto = new Producto(idProducto, nombreProducto, categoria, precio, cantidad, imagen);
+                    Producto producto = new Producto(idProducto, nombreProducto, categoria, precio, cantidad);
                     productos.add(producto);
                 }
 

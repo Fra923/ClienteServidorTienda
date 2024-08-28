@@ -87,9 +87,8 @@ public class Inventario {
                 String categoria = rs.getString("Categoria");
                 int cantidad = rs.getInt("Cantidad");
                 double precio = rs.getDouble("Precio");
-                String imagen = rs.getString("imagen");
 
-                Producto producto = new Producto(idProducto, nombre, categoria, precio, cantidad, imagen);
+                Producto producto = new Producto(idProducto, nombre, categoria, precio, cantidad);
                 productos.add(producto);
             }
 

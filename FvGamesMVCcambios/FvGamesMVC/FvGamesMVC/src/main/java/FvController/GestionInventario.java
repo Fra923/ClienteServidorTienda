@@ -32,4 +32,8 @@ public class GestionInventario {
         }
     }
     
+    public List<Producto> consultarTodosProductos(){        
+        return Producto.leerTodosProductos();
+    }
+    
 }

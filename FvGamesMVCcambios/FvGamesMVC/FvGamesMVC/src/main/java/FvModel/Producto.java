@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Producto {
 
@@ -16,22 +18,23 @@ public class Producto {
     private String imagen;  // Ruta de la imagen descriptiva
 
     // Constructor sin id para nuevos productos
-    public Producto(String nombre, String categoria, double precio, int cantidad, String imagen) {
+    public Producto(String nombre, String categoria, double precio, int cantidad) {
         this.nombre = nombre;
         this.categoria = categoria;
         this.cantidad = cantidad;
         this.precio = precio;
-        this.imagen = imagen;
     }
 
+    public Producto() {
+    } 
+
     // Constructor con id para productos existentes
-    public Producto(int idProducto, String nombre, String categoria, double precio, int cantidad, String imagen) {
+    public Producto(int idProducto, String nombre, String categoria, double precio, int cantidad) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.categoria = categoria;
         this.cantidad = cantidad;
         this.precio = precio;
-        this.imagen = imagen;
     }
 
     // Getters y Setters
@@ -122,12 +125,35 @@ public class Producto {
                 int cantidad = rs.getInt("Cantidad");
                 double precio = rs.getDouble("Precio");
                 String imagen = rs.getString("imagen");
-                producto = new Producto(idProducto, nombre, categoria, precio, cantidad, imagen);
+                producto = new Producto(idProducto, nombre, categoria, precio, cantidad);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return producto;
+    }
+    
+    // Leer todos los productos de la base de datos
+    public static List<Producto> leerTodosProductos() {
+        String sql = "SELECT * FROM Productos";
+        List<Producto> lista = new ArrayList<>();
+
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "root");
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("idProductos");
+                String nombre = rs.getString("Producto");
+                String categoria = rs.getString("Categoria");
+                int cantidad = rs.getInt("Cantidad");
+                double precio = rs.getDouble("Precio");
+                lista.add(new Producto(id, nombre, categoria, precio, cantidad));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lista;
     }
 
     // Actualizar un producto en la base de datos
