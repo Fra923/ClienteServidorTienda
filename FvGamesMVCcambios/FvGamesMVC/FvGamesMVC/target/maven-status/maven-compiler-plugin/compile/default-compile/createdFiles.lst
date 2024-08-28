@@ -66,6 +66,7 @@ FvModel\CarritoDeCompras.class
 FvView\LoginClienteView$4.class
 FvView\ClienteVista.class
 FvView\AdminViewGestionClientes$5.class
+FvView\AdminViewVentas$4.class
 FvView\AdminViewGestionClientes$2.class
 FvView\AdminViewGestionInventario$2.class
 FvModel\Inventario.class

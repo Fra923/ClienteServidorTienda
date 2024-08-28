@@ -96,7 +96,7 @@ public class Producto {
     public void crearProducto() {
         String sql = "INSERT INTO Productos (Producto, Categoria, Cantidad, Precio, Activo) VALUES (?, ?, ?, ?, 'Si')";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "password");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, this.nombre);
             pstmt.setString(2, this.categoria);
@@ -114,7 +114,7 @@ public class Producto {
         String sql = "SELECT * FROM Productos WHERE idProductos = ?";
         Producto producto = null;
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "root");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, idProducto);
             ResultSet rs = pstmt.executeQuery();
@@ -137,7 +137,7 @@ public class Producto {
         String sql = "SELECT * FROM Productos";
         List<Producto> lista = new ArrayList<>();
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "root");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             ResultSet rs = pstmt.executeQuery();
 
@@ -159,7 +159,7 @@ public class Producto {
     public void actualizarProducto() {
         String sql = "UPDATE Productos SET Producto = ?, Categoria = ?, Cantidad = ?, Precio = ? WHERE idProductos = ?";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "root");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, this.nombre);
             pstmt.setString(2, this.categoria);
@@ -177,7 +177,7 @@ public class Producto {
     public void eliminarProducto() {
         String sql = "DELETE FROM Productos WHERE idProductos = ?";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "password");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, this.idProducto);
             pstmt.executeUpdate();
@@ -191,7 +191,7 @@ public class Producto {
     public static Connection conectar() {
         Connection conn = null;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "password");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
             System.out.println("Conexión exitosa a la base de datos.");
         } catch (SQLException e) {
             System.out.println(e.getMessage());

@@ -18,7 +18,7 @@ public class BaseDatos {
     //Parámetros de inicialización de BD
     String url = "jdbc:mysql://localhost:3306/FvGames";
     String username = "root";
-    String password = "SVfr2890";
+    String password = "SVfr2890210!";
     
     //Construir los métodos para la conexión a la BD
 

@@ -56,7 +56,7 @@ public class CarritoDeCompras {
     private void actualizarEstadoCarrito(String nuevoEstado) {
         String sql = "UPDATE CarritoCompras SET Estado = ? WHERE idCliente = ?";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "password");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, nuevoEstado);

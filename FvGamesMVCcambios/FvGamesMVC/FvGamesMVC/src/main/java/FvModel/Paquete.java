@@ -84,7 +84,7 @@ public class Paquete {
         String sqlPaquete = "INSERT INTO Paquetes (NombrePaquete, Descuento) VALUES (?, ?)";
         String sqlProductoPaquete = "INSERT INTO ProductoPaquete (idPaquete, idProducto) VALUES (?, ?)";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "password");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
              PreparedStatement pstmtPaquete = conn.prepareStatement(sqlPaquete, PreparedStatement.RETURN_GENERATED_KEYS);
              PreparedStatement pstmtProductoPaquete = conn.prepareStatement(sqlProductoPaquete)) {
 
@@ -118,7 +118,7 @@ public class Paquete {
         String sqlProductos = "SELECT p.* FROM Productos p INNER JOIN ProductoPaquete pp ON p.idProductos = pp.idProducto WHERE pp.idPaquete = ?";
         Paquete paquete = null;
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "password");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
              PreparedStatement pstmtPaquete = conn.prepareStatement(sqlPaquete);
              PreparedStatement pstmtProductos = conn.prepareStatement(sqlProductos)) {
 
@@ -166,7 +166,7 @@ public class Paquete {
         String sqlEliminarProductos = "DELETE FROM ProductoPaquete WHERE idPaquete = ?";
         String sqlProductoPaquete = "INSERT INTO ProductoPaquete (idPaquete, idProducto) VALUES (?, ?)";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "password");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
              PreparedStatement pstmtPaquete = conn.prepareStatement(sqlPaquete);
              PreparedStatement pstmtEliminarProductos = conn.prepareStatement(sqlEliminarProductos);
              PreparedStatement pstmtProductoPaquete = conn.prepareStatement(sqlProductoPaquete)) {
@@ -198,7 +198,7 @@ public class Paquete {
         String sqlPaquete = "SELECT * FROM Paquetes";
         List<Paquete> paquetes = new ArrayList<>();
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "root");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
              PreparedStatement pstmtPaquete = conn.prepareStatement(sqlPaquete);) {
 
             // Obtener los detalles del paquete
@@ -226,7 +226,7 @@ return null;
         String sqlEliminarProductos = "DELETE FROM ProductoPaquete WHERE idPaquete = ?";
         String sqlPaquete = "DELETE FROM Paquetes WHERE idPaquete = ?";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "password");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
              PreparedStatement pstmtEliminarProductos = conn.prepareStatement(sqlEliminarProductos);
              PreparedStatement pstmtPaquete = conn.prepareStatement(sqlPaquete)) {
 
@@ -248,7 +248,7 @@ return null;
     public static Connection conectar() {
         Connection conn = null;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "password");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
             System.out.println("Conexión exitosa a la base de datos.");
         } catch (SQLException e) {
             System.out.println(e.getMessage());

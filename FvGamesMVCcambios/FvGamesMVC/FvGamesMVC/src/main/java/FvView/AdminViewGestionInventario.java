@@ -5,6 +5,7 @@ import FvController.GestionClientes;
 import FvController.GestionInventario;
 import FvModel.Producto;
 import static java.nio.file.Files.delete;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class AdminViewGestionInventario extends javax.swing.JFrame {
@@ -157,7 +158,9 @@ public class AdminViewGestionInventario extends javax.swing.JFrame {
                 System.out.println(cant);                
             }
             gestionInventario.actualizarProducto(Integer.valueOf(id), nombre, cat, Double.valueOf(precio), Integer.valueOf(cant));
+            
         }
+        JOptionPane.showMessageDialog(null, "Inventario actualizado con éxito.", "Info", 1);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

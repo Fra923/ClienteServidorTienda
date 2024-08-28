@@ -33,7 +33,7 @@ public class Administrador {
     public boolean autenticarAdministrador() {
         String sql = "SELECT * FROM Administradores WHERE Cedula = ? AND Contrasena = ?";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FvGames", "root", "password");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FvGames", "root", "SVfr2890210!");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, cedula);
@@ -52,7 +52,7 @@ public class Administrador {
     public void actualizarContrasena(String nuevaContrasena) {
         String sql = "UPDATE Administradores SET Contrasena = ? WHERE Cedula = ?";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "password");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, nuevaContrasena);

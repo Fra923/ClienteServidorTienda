@@ -124,7 +124,7 @@ public class ClienteRegistrado extends Cliente {
         String sql = "INSERT INTO Cliente (Nombre, Apellidos, Cedula, Direccion, Email, Dinero, MetodoPago, Foto, NumeroTarjeta, NumeroCuentaBanco, Contrasena, TipoCliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         int id = -1;
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "root");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
              PreparedStatement pstmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
 
             pstmt.setString(1, getNombre());
@@ -167,9 +167,9 @@ public class ClienteRegistrado extends Cliente {
         
         String sql = "SELECT * FROM cliente WHERE Cedula=?";        
         
-        System.out.println("Estoy en consultar cliente");
+       // System.out.println("Estoy en consultar cliente");
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "root");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, cedula);
@@ -219,9 +219,9 @@ public class ClienteRegistrado extends Cliente {
         
         String sql = "SELECT * FROM cliente WHERE Cedula=? AND Contrasena=?";        
         
-        System.out.println("Estoy en consultar cliente");
+        //System.out.println("Estoy en consultar cliente");
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "root");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, cedula);
@@ -248,7 +248,7 @@ public class ClienteRegistrado extends Cliente {
             e.printStackTrace();
         }
         
-        System.out.println("SETS");
+        //System.out.println("SETS");
         System.out.println("Metodo de pago:" + MetodoPago);
         this.idCliente = Integer.parseInt(id);
         this.setNombre(Nombre);
@@ -266,7 +266,7 @@ public class ClienteRegistrado extends Cliente {
         String sql = "UPDATE Cliente SET Nombre=?, Apellidos=?, Cedula=?, Direccion=?, Email=?, Dinero=?, MetodoPago=?, Contrasena=? WHERE Cedula=?";
         int id = -1;
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "root");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, nombre);
